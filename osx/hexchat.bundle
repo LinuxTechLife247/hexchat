@@ -2,8 +2,8 @@
 <app-bundle>
 
   <meta>
-    <prefix name="default">/usr/local</prefix>
-    <prefix name="enchant">/usr/local/opt/enchant-applespell</prefix>
+    <prefix name="default">/opt/homebrew</prefix>
+    <prefix name="enchant">/opt/homebrew/opt/enchant</prefix>
     <destination overwrite="yes">${project}</destination>
 
     <run-install-name-tool/>
@@ -22,10 +22,14 @@
   </binary>
 
   <binary>
-    ${prefix:enchant}/lib/libenchant.dylib
+    ${prefix}/lib/hexchat/plugins/*.dylib
+  </binary>
+
+  <binary>
+    ${prefix:enchant}/lib/libenchant-2.2.dylib
   </binary>
   <binary>
-    ${prefix:enchant}/lib/enchant/libenchant_applespell.so
+    ${prefix:enchant}/lib/enchant-2/enchant_applespell.so
   </binary>
 
   <binary>
@@ -42,9 +46,6 @@
   </binary>
   <binary>
     ${prefix}/lib/gdk-pixbuf-2.0/${pkg:${gtk}:gtk_binary_version}/loaders/*.so
-  </binary>
-  <binary>
-    ${prefix}/lib/pango/${pkg:pango:pango_module_version}/modules/
   </binary>
   <data>
     ${prefix}/share/themes/Mac/gtk-2.0-key/gtkrc
